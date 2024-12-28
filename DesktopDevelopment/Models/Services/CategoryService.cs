@@ -15,9 +15,9 @@ namespace DesktopDevelopment.Models.Services
 
         public override void DeleteModel(CategoriesDto model)
         {
-            Category category = DatabaseContext.Categories.First(item => item.CategoryId == model.Id);
-            category.IsActive = false;
-            category.DateDeleted = DateTime.Now;
+            Category entity = DatabaseContext.Categories.First(item => item.CategoryId == model.Id);
+            entity.IsActive = false;
+            entity.DateDeleted = DateTime.Now;
             DatabaseContext.SaveChanges();
         }
 
@@ -28,18 +28,18 @@ namespace DesktopDevelopment.Models.Services
 
         public override List<CategoriesDto> GetModels()
         {
-            IQueryable<Category> categories = DatabaseContext.Categories.Where(item => item.IsActive);
+            IQueryable<Category> entities = DatabaseContext.Categories.Where(item => item.IsActive);
             if (!string.IsNullOrEmpty(SearchInput))
             {
-                categories = categories.Where(item => item.CategoryName.Contains(SearchInput));
+                entities = entities.Where(item => item.CategoryName.Contains(SearchInput));
             }
-            IQueryable<CategoriesDto> categoriesDto = categories.Select(item => new CategoriesDto()
+            IQueryable<CategoriesDto> entitiesDto = entities.Select(item => new CategoriesDto()
             {
                 Id = item.CategoryId,
                 CategoryName = item.CategoryName,
                 Description = item.Description
             });
-            return categoriesDto.ToList();
+            return entitiesDto.ToList();
         }
         public override Category CreateModel()
         {

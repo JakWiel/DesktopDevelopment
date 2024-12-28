@@ -46,5 +46,5 @@ public partial class CustomerReview
 
     [ForeignKey("ServiceId")]
     [InverseProperty("CustomerReviews")]
-    public virtual ServicesOffered? Service { get; set; }
+    public virtual ServicesOffered Service { get; set; }
 }

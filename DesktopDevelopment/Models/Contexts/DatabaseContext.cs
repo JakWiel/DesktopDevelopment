@@ -15,7 +15,7 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<Category> Categories { get; set; }
 
-    public virtual DbSet<Category> Customers { get; set; }
+    public virtual DbSet<Customer> Customers { get; set; }
 
     public virtual DbSet<CustomerReview> CustomerReviews { get; set; }
 
