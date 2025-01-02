@@ -15,7 +15,6 @@ namespace DesktopDevelopment.ViewModels
 {
     public class MainWindowViewModel : BaseViewModel
     {
-
         #region TopAndSideMenuCommand
 
         public ICommand OpenProductViewCommand { get => new BaseCommand(() => CreateView(new ProductsViewModel())); }

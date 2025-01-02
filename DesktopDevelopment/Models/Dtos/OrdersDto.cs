@@ -2,9 +2,10 @@
 
 namespace DesktopDevelopment.Models.Dtos
 {
-    class OrdersDto
+    public class OrdersDto
     {
-        public int Id { get; set; }
+        public int OrderId { get; set; }
+        public string CustomerFullName { get; set; }
         public int CustomerID { get; set; }
         public int EmployeeID { get; set; }
         public int StatusID { get; set; }
