@@ -2,9 +2,9 @@
 {
     public class CustomerViewModel : WorkspaceViewModel
     {
-        public CustomerViewModel()
-        {
-            DisplayName = "New Customer";
-        }
+        //public CustomerViewModel()
+        //{
+        //    DisplayName = "New Customer";
+        //}
     }
 }

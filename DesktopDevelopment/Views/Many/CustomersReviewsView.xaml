@@ -22,7 +22,7 @@
             <Label Content="Search" VerticalAlignment="Center" />
             <TextBox Margin="10 2" Width="200" VerticalContentAlignment="Center" Text="{Binding SearchInput}" KeyDown="TextBox_KeyDown"/>
         </StackPanel>
-        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding CustomerReviews}">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Models}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="CustomerID" Binding="{Binding CustomerID}"/>

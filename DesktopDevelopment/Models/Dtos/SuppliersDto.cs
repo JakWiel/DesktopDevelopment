@@ -1,6 +1,6 @@
 ﻿namespace DesktopDevelopment.Models.Dtos
 {
-    class SuppliersDto
+    public class SuppliersDto
     {
         public int Id { get; set; }
         public string SupplierName { get; set; } = null!;

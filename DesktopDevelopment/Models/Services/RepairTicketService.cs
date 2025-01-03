@@ -1,0 +1,55 @@
+﻿using DesktopDevelopment.Models.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace DesktopDevelopment.Models.Services
+{
+    public class RepairTicketService : BaseService<RepairTicketDto, RepairTicket>
+    {
+        public override void AddModel(RepairTicket model)
+        {
+            DatabaseContext.RepairTickets.Add(model);
+            DatabaseContext.SaveChanges();
+        }
+
+        public override void DeleteModel(RepairTicketDto model)
+        {
+            RepairTicket entity = DatabaseContext.RepairTickets.First(item => item.RepairTicketId == model.Id);
+            entity.IsActive = false;
+            entity.DateDeleted = DateTime.Now;
+            DatabaseContext.SaveChanges();
+        }
+
+        public override RepairTicket GetModel(int id)
+        {
+            return DatabaseContext.RepairTickets.First(item => item.RepairTicketId == id);
+        }
+
+        public override List<RepairTicketDto> GetModels()
+        {
+            IQueryable<RepairTicket> entities = DatabaseContext.RepairTickets.Where(item => item.IsActive);
+            if (!string.IsNullOrEmpty(SearchInput))
+            {
+                entities = entities.Where(item => item.Customer.FullName.Contains(SearchInput));
+            }
+            IQueryable<RepairTicketDto> entitiesDto = entities.Select(item => new RepairTicketDto()
+            {
+            });
+            return entitiesDto.ToList();
+        }
+        public override RepairTicket CreateModel()
+        {
+            return new RepairTicket()
+            {
+                IsActive = true,
+                DateCreated = DateTime.Now,
+            };
+        }
+        public override void UpdateModel(RepairTicket model)
+        {
+            DatabaseContext.RepairTickets.Update(model);
+            DatabaseContext.SaveChanges();
+        }
+    }
+}

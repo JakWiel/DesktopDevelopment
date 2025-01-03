@@ -2,10 +2,10 @@
 {
     public class NewProductViewModel : WorkspaceViewModel
     {
-        public NewProductViewModel()
-        {
-            DisplayName = "New Product";
-        }
+        //public NewProductViewModel()
+        //{
+        //    DisplayName = "New Product";
+        //}
 
     }
 }
