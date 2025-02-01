@@ -8,14 +8,36 @@
                     xmlns:vwm="clr-namespace:DesktopDevelopment.Views.Many">
 
 
-    <DataTemplate DataType="{x:Type vmm:ProductsViewModel}">
-        <vwm:ProductsView/>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type vms:NewProductViewModel}">
-        <vws:NewProductView/>
-    </DataTemplate>
+    <!-- Single View -->
     <DataTemplate DataType="{x:Type vms:CustomerViewModel}">
         <vws:CustomerView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:CategoryViewModel}">
+        <vws:CategoryView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:ProductViewModel}">
+        <vws:ProductView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:SupplierViewModel}">
+        <vws:SupplierView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:PromotionViewModel}">
+        <vws:PromotionView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:EmployeeViewModel}">
+        <vws:EmployeeView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:UserRoleViewModel}">
+        <vws:UserRoleView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:CustomersReviewViewModel}">
+        <vws:CustomerReviewView/>
+    </DataTemplate>
+
+
+    <!-- Many Views -->
+    <DataTemplate DataType="{x:Type vmm:ProductsViewModel}">
+        <vwm:ProductsView/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type vmm:CustomersViewModel}">
         <vwm:CustomersView/>
@@ -35,7 +57,7 @@
     <DataTemplate DataType="{x:Type vmm:PaymentMethodsViewModel}">
         <vwm:PaymentMethodsView/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vmm:UserRoleViewModel}">
+    <DataTemplate DataType="{x:Type vmm:UserRolesViewModel}">
         <vwm:UserRoleView/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type vmm:TransactionsViewModel}">

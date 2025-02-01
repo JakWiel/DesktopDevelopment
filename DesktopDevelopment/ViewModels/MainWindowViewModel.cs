@@ -1,4 +1,5 @@
-﻿using DesktopDevelopment.Helpers;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using DesktopDevelopment.Helpers;
 using DesktopDevelopment.ViewModels.Many;
 using DesktopDevelopment.ViewModels.Single;
 using System;
@@ -18,7 +19,6 @@ namespace DesktopDevelopment.ViewModels
         #region TopAndSideMenuCommand
 
         public ICommand OpenProductViewCommand { get => new BaseCommand(() => CreateView(new ProductsViewModel())); }
-        public ICommand OpenNewProductViewCommand { get => new BaseCommand(() => CreateView(new NewProductViewModel())); }
         public ICommand OpenCustomerViewCommand { get => new BaseCommand(() => CreateView(new CustomerViewModel())); }
         public ICommand OpenCustomersViewCommand { get => new BaseCommand(() => CreateView(new CustomersViewModel())); }
         public ICommand OpenEmployeesViewCommand { get => new BaseCommand(() => CreateView(new EmployeesViewModel())); }
@@ -45,6 +45,7 @@ namespace DesktopDevelopment.ViewModels
             Commands = new(CreateCommands());
             Workspaces = new();
             Workspaces.CollectionChanged += OnWorkspacesChanged;
+            WeakReferenceMessenger.Default.Register<OpenViewMessage>(this, (recipent, message) => OpenView(message));
         }
 
         #region Buttons in side bar
@@ -105,6 +106,11 @@ namespace DesktopDevelopment.ViewModels
         #endregion
 
         #region Helepers
+
+        private void OpenView(OpenViewMessage message)
+        {
+            CreateView(message.ViewModelToBeOpened);
+        }
 
         private void CreateView(WorkspaceViewModel workspace)
         {

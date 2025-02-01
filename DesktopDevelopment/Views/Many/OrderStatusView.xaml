@@ -13,9 +13,9 @@
         </StackPanel.DataContext>
         <StackPanel Orientation="Horizontal" Focusable="True">
             <ToolBar HorizontalAlignment="Left">
-                <Button Margin="10 0" Content="Refresh"/>
-                <Button Margin="10 0" Content="Delete"/>
-                <Button Margin="10 0" Content="Add new"/>
+                <Button Margin="10 0" Content="Refresh" Command="{Binding RefreshCommand}"/>
+                <Button Margin="10 0" Content="Delete" Command="{Binding DeleteCommand}"/>
+                <Button Margin="10 0" Content="Add new" Command="{Binding CreateNewCommand}"/>
             </ToolBar>
             <Label Content="Search" VerticalAlignment="Center"/>
             <TextBox Margin="10 2" Width="200" VerticalContentAlignment="Center" Text="{Binding SearchInput}" KeyDown="TextBox_KeyDown"/>

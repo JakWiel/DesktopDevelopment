@@ -1,28 +1,23 @@
 ﻿using DesktopDevelopment.Helpers;
 using DesktopDevelopment.Models.Services;
-using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace DesktopDevelopment.ViewModels.Many
 {
-    public class BaseManyViewModel<ServiceType, DtoType, ModelType> 
+    abstract public class BaseManyViewModel<ServiceType, DtoType, ModelType>
         : BaseServiceViewModel<ServiceType, DtoType, ModelType>
         where ServiceType : BaseService<DtoType, ModelType>, new()
         where DtoType : class
         where ModelType : new()
     {
         private ObservableCollection<DtoType> _Models;
-        public ObservableCollection<DtoType> Models {
-            get => _Models; 
+        public ObservableCollection<DtoType> Models
+        {
+            get => _Models;
             set
             {
-                if(_Models != value)
+                if (_Models != value)
                 {
                     _Models = value;
                     OnPropertyChanged(() => Models);
@@ -31,11 +26,13 @@ namespace DesktopDevelopment.ViewModels.Many
         }
         public ICommand RefreshCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
-        public string? SearchInput { 
+        public ICommand CreateNewCommand { get; set; }
+        public string? SearchInput
+        {
             get => Service.SearchInput;
             set
             {
-                if(Service.SearchInput != value)
+                if (Service.SearchInput != value)
                 {
                     Service.SearchInput = value;
                     OnPropertyChanged(() => SearchInput);
@@ -44,14 +41,19 @@ namespace DesktopDevelopment.ViewModels.Many
             }
         }
         private DtoType? _SelectedModel;
-        public DtoType? SelectedModel {
+        public DtoType? SelectedModel
+        {
             get => _SelectedModel;
             set
             {
-                if(_SelectedModel != value)
+                if (_SelectedModel != value)
                 {
                     _SelectedModel = value;
                     OnPropertyChanged(() => SelectedModel);
+                    if (SelectedModel != null)
+                    {
+                        HandleSelect();
+                    }
                 }
             }
         }
@@ -61,6 +63,7 @@ namespace DesktopDevelopment.ViewModels.Many
             Refresh();
             RefreshCommand = new BaseCommand(() => Refresh());
             DeleteCommand = new BaseCommand(() => Delete());
+            CreateNewCommand = new BaseCommand(() => CreateNew());
         }
         private void Refresh()
         {
@@ -68,11 +71,14 @@ namespace DesktopDevelopment.ViewModels.Many
         }
         private void Delete()
         {
-            if(SelectedModel != null)
+            if (SelectedModel != null)
             {
                 Service.DeleteModel(SelectedModel);
                 Models.Remove(SelectedModel);
             }
         }
+        protected abstract void CreateNew();
+        protected virtual void HandleSelect()
+        { }
     }
 }

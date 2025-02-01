@@ -9,5 +9,8 @@ namespace DesktopDevelopment.ViewModels.Many
         public CustomersReviewsViewModel() : base("Customers Reviews")
         {
         }
+        protected override void CreateNew()
+        {
+        }
     }
 }
