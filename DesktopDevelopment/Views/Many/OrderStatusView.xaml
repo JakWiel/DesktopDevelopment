@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
         <StackPanel.DataContext>
-            <Many:OrderStatusViewModel/>
+            <Many:OrderStatusesViewModel/>
         </StackPanel.DataContext>
         <StackPanel Orientation="Horizontal" Focusable="True">
             <ToolBar HorizontalAlignment="Left">

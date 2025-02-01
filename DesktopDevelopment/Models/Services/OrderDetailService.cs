@@ -29,7 +29,7 @@ namespace DesktopDevelopment.Models.Services
 
         public override List<OrderDetailsDto> GetModels()
         {
-            IQueryable<OrderDetail> entities = DatabaseContext.OrderDetails.Include(item => item.Product.ProductName).Where(item => item.IsActive);
+            IQueryable<OrderDetail> entities = DatabaseContext.OrderDetails.Include(item => item.Product).Where(item => item.IsActive);
             if (!string.IsNullOrEmpty(SearchInput))
             {
                 entities = entities.Where(item => item.Product.ProductName.Contains(SearchInput));

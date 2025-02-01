@@ -33,6 +33,30 @@
     <DataTemplate DataType="{x:Type vms:CustomersReviewViewModel}">
         <vws:CustomerReviewView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:OrderDetailViewModel}">
+        <vws:OrderDetailView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:OrderStatusViewModel}">
+        <vws:OrderStatusView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:OrderViewModel}">
+        <vws:OrderView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:PaymentMethodViewModel}">
+        <vws:PaymentMethodView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:RepairTicketViewModel}">
+        <vws:RepairTicketView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:ServiceOfferedViewModel}">
+        <vws:ServiceOfferedView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:ShipmentMethodViewModel}">
+        <vws:ShipmentMethodView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vms:TransactionViewModel}">
+        <vws:TransactionView/>
+    </DataTemplate>
 
 
     <!-- Many Views -->
@@ -51,14 +75,14 @@
     <DataTemplate DataType="{x:Type vmm:ShipmentMethodsViewModel}">
         <vwm:ShipmentMethodsView/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vmm:OrderStatusViewModel}">
+    <DataTemplate DataType="{x:Type vmm:OrderStatusesViewModel}">
         <vwm:OrderStatusView/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type vmm:PaymentMethodsViewModel}">
         <vwm:PaymentMethodsView/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type vmm:UserRolesViewModel}">
-        <vwm:UserRoleView/>
+        <vwm:UserRolesView/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type vmm:TransactionsViewModel}">
         <vwm:TransactionsView/>

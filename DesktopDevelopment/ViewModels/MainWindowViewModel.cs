@@ -24,9 +24,9 @@ namespace DesktopDevelopment.ViewModels
         public ICommand OpenEmployeesViewCommand { get => new BaseCommand(() => CreateView(new EmployeesViewModel())); }
         public ICommand OpenCategoriesViewCommand { get => new BaseCommand(() => CreateView(new CategoriesViewModel())); }
         public ICommand OpenShipmentMethodsViewCommand { get => new BaseCommand(() => CreateView(new ShipmentMethodsViewModel())); }
-        public ICommand OpenOrderStatusViewCommand { get => new BaseCommand(() => CreateView(new OrderStatusViewModel())); }
+        public ICommand OpenOrderStatusesViewCommand { get => new BaseCommand(() => CreateView(new OrderStatusesViewModel())); }
         public ICommand OpenPaymentStatusViewCommand { get => new BaseCommand(() => CreateView(new PaymentMethodsViewModel())); }
-        public ICommand OpenUserRolesViewCommand { get => new BaseCommand(() => CreateView(new UserRoleViewModel())); }
+        public ICommand OpenUserRolesViewCommand { get => new BaseCommand(() => CreateView(new UserRolesViewModel())); }
         public ICommand OpenTransactionsViewCommand { get => new BaseCommand(() => CreateView(new TransactionsViewModel())); }
         public ICommand OpenOrdersViewCommand { get => new BaseCommand(() => CreateView(new OrdersViewModel())); }
         public ICommand OpenRepairTicketsViewCommand { get => new BaseCommand(() => CreateView(new RepairTicketsViewModel())); }
@@ -63,7 +63,7 @@ namespace DesktopDevelopment.ViewModels
                 new ("Orders", OpenOrdersViewCommand, "#862B35", "/Models/Icons/orderIcon.png"),
                 new ("Categories", OpenCategoriesViewCommand, "#862B35", "/Models/Icons/categoryIcon.png"),
                 new ("Shipment", OpenShipmentMethodsViewCommand, "#A12A31", "/Models/Icons/shipmentIcon.png"),
-                new ("Order Status", OpenOrderStatusViewCommand, "#D62828", "/Models/Icons/orderStatusIcon.png"),
+                new ("Order Status", OpenOrderStatusesViewCommand, "#D62828", "/Models/Icons/orderStatusIcon.png"),
                 new ("Payment Methods", OpenPaymentStatusViewCommand, "#003049", "/Models/Icons/paymentMethodIcon.png"),
                 new ("User Roles", OpenUserRolesViewCommand, "#362E41", "/Models/Icons/userRole.png"),
                 new ("Transactions", OpenTransactionsViewCommand, "#6B2C39", "/Models/Icons/transactionsIcon.png"),

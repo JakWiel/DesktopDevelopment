@@ -7,9 +7,9 @@ using DesktopDevelopment.ViewModels.Single;
 
 namespace DesktopDevelopment.ViewModels.Many
 {
-    public class OrderStatusViewModel : BaseManyViewModel<OrderStatusService, OrderStatusDto, OrderStatus>
+    public class OrderStatusesViewModel : BaseManyViewModel<OrderStatusService, OrderStatusDto, OrderStatus>
     {
-        public OrderStatusViewModel() : base("Order Status")
+        public OrderStatusesViewModel() : base("Order Statuses")
         {
         }
         protected override void CreateNew()
@@ -17,7 +17,7 @@ namespace DesktopDevelopment.ViewModels.Many
             WeakReferenceMessenger.Default.Send<OpenViewMessage>(new OpenViewMessage()
             {
                 Sender = this,
-                ViewModelToBeOpened = new CategoryViewModel()
+                ViewModelToBeOpened = new OrderStatusViewModel()
             });
         }
     }

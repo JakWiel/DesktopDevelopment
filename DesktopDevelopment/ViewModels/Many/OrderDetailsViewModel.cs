@@ -17,7 +17,7 @@ namespace DesktopDevelopment.ViewModels.Many
             WeakReferenceMessenger.Default.Send<OpenViewMessage>(new OpenViewMessage()
             {
                 Sender = this,
-                ViewModelToBeOpened = new CategoryViewModel()
+                ViewModelToBeOpened = new OrderDetailViewModel()
             });
         }
     }

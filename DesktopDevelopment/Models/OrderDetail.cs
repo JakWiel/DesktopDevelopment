@@ -11,7 +11,7 @@ public partial class OrderDetail
     public int OrderDetailId { get; set; }
 
     [Column("OrderID")]
-    public int? OrderId { get; set; }
+    public int OrderId { get; set; }
 
     [Column("ProductID")]
     public int ProductId { get; set; }

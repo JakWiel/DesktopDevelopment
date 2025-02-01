@@ -6,9 +6,9 @@ namespace DesktopDevelopment.Views.Many
     /// <summary>
     /// Logika interakcji dla klasy UserRoleView.xaml
     /// </summary>
-    public partial class UserRoleView : UserControl
+    public partial class UserRolesView : UserControl
     {
-        public UserRoleView()
+        public UserRolesView()
         {
             InitializeComponent();
         }
