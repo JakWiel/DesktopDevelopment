@@ -48,5 +48,5 @@ public partial class Customer
 
     [ForeignKey("RoleId")]
     [InverseProperty("Customers")]
-    public virtual UserRole? Role { get; set; }
+    public virtual UserRole Role { get; set; } = null!;
 }

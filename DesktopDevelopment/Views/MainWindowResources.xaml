@@ -108,7 +108,11 @@
     <DataTemplate DataType="{x:Type vmm:SuppliersViewModel}">
         <vwm:SuppliersView/>
     </DataTemplate>
-
+    <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource {x:Type DataGrid}}">
+        <Setter Property="CanUserAddRows" Value="False" />
+        <Setter Property="CanUserDeleteRows" Value="False" />
+        <Setter Property="IsReadOnly" Value="True" />
+    </Style>
     <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">
         <Setter Property="HeaderTemplate">
             <Setter.Value>

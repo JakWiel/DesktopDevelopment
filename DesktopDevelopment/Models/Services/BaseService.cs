@@ -1,9 +1,5 @@
 ﻿using DesktopDevelopment.Models.Contexts;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesktopDevelopment.Models.Services
 {
@@ -17,7 +13,7 @@ namespace DesktopDevelopment.Models.Services
     {
         protected DatabaseContext DatabaseContext { get; set; }
         public string? SearchInput { get; set; }
-    public BaseService()
+        public BaseService()
         {
             DatabaseContext = new DatabaseContext();
         }
