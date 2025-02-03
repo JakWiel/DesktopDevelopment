@@ -11,6 +11,44 @@
     <UserControl.DataContext>
         <Single:OrderDetailViewModel/>
     </UserControl.DataContext>
+    <Grid Width="700">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
 
-    <Grid/>
+        <Label Content="Add Order Detail" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" Grid.ColumnSpan="4" Margin="0,10"/>
+
+        <Label Content="Order Detail ID:" Grid.Row="1" Margin="2,5"/>
+        <TextBox Text="{Binding OrderDetailID}" Margin="2,5" Grid.Row="1" Grid.Column="1" IsReadOnly="True"/>
+
+        <Label Content="Order ID:" Grid.Row="1" Grid.Column="2" Margin="2,5"/>
+        <TextBox Text="{Binding OrderID}" Margin="2,5" Grid.Row="1" Grid.Column="3"/>
+
+        <Label Content="Product ID:" Grid.Row="2" Margin="2,5"/>
+        <TextBox Text="{Binding ProductID}" Margin="2,5" Grid.Row="2" Grid.Column="1"/>
+
+        <Label Content="Product Name:" Grid.Row="2" Grid.Column="2" Margin="2,5"/>
+        <TextBox Text="{Binding ProductID}" Margin="2,5" Grid.Row="2" Grid.Column="3" IsReadOnly="True"/>
+
+        <Label Content="Quantity:" Grid.Row="3" Margin="2,5"/>
+        <TextBox Text="{Binding Quantity}" Margin="2,5" Grid.Row="3" Grid.Column="1"/>
+
+        <Label Content="Price:" Grid.Row="3" Grid.Column="2" Margin="2,5"/>
+        <TextBox Text="{Binding Price}" Margin="2,5" Grid.Row="3" Grid.Column="3"/>
+
+        <Button Grid.ColumnSpan="4" Background="Green" Width="180" Margin="0,10" Grid.Row="5" Command="{Binding SaveCommand}" Content="Submit"/>
+    </Grid>
+
 </UserControl>

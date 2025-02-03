@@ -11,8 +11,16 @@ namespace DesktopDevelopment.Models.Services
         public DateTime? CreatedTo { get; set; }
         public override void AddModel(Employee model)
         {
-            DatabaseContext.Employees.Add(model);
-            DatabaseContext.SaveChanges();
+            if (model.EmployeeId == default)
+            {
+                DatabaseContext.Employees.Add(model);
+                DatabaseContext.SaveChanges();
+            }
+            else
+            {
+                UpdateModel(model);
+            }
+
         }
 
         public override void DeleteModel(EmployeeDto model)

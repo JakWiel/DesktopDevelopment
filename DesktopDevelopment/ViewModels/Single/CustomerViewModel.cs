@@ -4,6 +4,7 @@ using DesktopDevelopment.Models;
 using DesktopDevelopment.Models.Dtos;
 using DesktopDevelopment.Models.Services;
 using DesktopDevelopment.ViewModels.Many;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Windows.Input;
 
@@ -18,7 +19,7 @@ namespace DesktopDevelopment.ViewModels.Single
             {
                 if (Model.FullName != value)
                 {
-                    Model.FullName = value;
+                    Model.FullName = value.Trim();
                     OnPropertyChanged(() => FullName);
                 }
             }
@@ -27,7 +28,7 @@ namespace DesktopDevelopment.ViewModels.Single
         {
             get => Model.Email; set
             {
-                if (Model.Email != value)
+                if (Model.Email != value && !Model.Email.IsNullOrEmpty())
                 {
                     Model.Email = value;
                     OnPropertyChanged(() => Email);

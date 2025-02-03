@@ -14,7 +14,7 @@ namespace DesktopDevelopment.ViewModels.Single
             {
                 if (Model.Customer.FullName != value)
                 {
-                    Model.Customer.FullName = value;
+                    Model.Customer.FullName = value.Trim();
                     OnPropertyChanged(() => CustomerFullName);
                 }
             }
@@ -86,5 +86,6 @@ namespace DesktopDevelopment.ViewModels.Single
         }
 
         public OrderViewModel() : base("Order") { }
+        public OrderViewModel(int id) : base(id, "Order") { }
     }
 }

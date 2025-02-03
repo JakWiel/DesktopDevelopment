@@ -11,8 +11,16 @@ namespace DesktopDevelopment.Models.Services
         public DateTime? CreatedTo { get; set; }
         public override void AddModel(PaymentMethod model)
         {
-            DatabaseContext.PaymentMethods.Add(model);
-            DatabaseContext.SaveChanges();
+            if (model.PaymentMethodId == default)
+            {
+                DatabaseContext.PaymentMethods.Add(model);
+                DatabaseContext.SaveChanges();
+            }
+            else
+            {
+                UpdateModel(model);
+            }
+
         }
 
         public override void DeleteModel(PaymentMethodDto model)

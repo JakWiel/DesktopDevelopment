@@ -1,6 +1,7 @@
 ﻿using DesktopDevelopment.Models;
 using DesktopDevelopment.Models.Dtos;
 using DesktopDevelopment.Models.Services;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DesktopDevelopment.ViewModels.Single
 {
@@ -63,15 +64,18 @@ namespace DesktopDevelopment.ViewModels.Single
             get => Model.Comment;
             set
             {
-                if (Model.Comment != value)
+                if (Model.Comment != value && !Model.Comment.IsNullOrEmpty())
                 {
-                    Model.Comment = value;
+                    Model.Comment = value.Trim();
                     OnPropertyChanged(() => Comment);
                 }
             }
         }
 
         public CustomersReviewViewModel() : base("New Customer Review")
+        {
+        }
+        public CustomersReviewViewModel(int id) : base(id, "New Customer Review")
         {
         }
     }

@@ -13,12 +13,15 @@ namespace DesktopDevelopment.ViewModels.Single
             {
                 if (Model.MethodName != value)
                 {
-                    Model.MethodName = value;
+                    Model.MethodName = value.Trim();
                     OnPropertyChanged(() => Name);
                 }
             }
         }
         public ShipmentMethodViewModel() : base("Shipment Method")
+        {
+        }
+        public ShipmentMethodViewModel(int id) : base(id, "Shipment Method")
         {
         }
     }

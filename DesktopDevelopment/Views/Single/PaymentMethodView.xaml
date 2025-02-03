@@ -12,5 +12,29 @@
         <Single:PaymentMethodViewModel/>
     </UserControl.DataContext>
 
-    <Grid/>
+    <Grid Width="700">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Add Payment Method" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" Grid.ColumnSpan="4" Margin="0,10"/>
+
+        <Label Content="Payment Method ID:" Grid.Row="1" Margin="2,5"/>
+        <TextBox Text="{Binding Id}" Margin="2,5" Grid.Row="1" Grid.Column="1" IsReadOnly="True"/>
+
+        <Label Content="Method Name:" Grid.Row="2" Margin="2,5"/>
+        <TextBox Text="{Binding MethodName}" Margin="2,5" Grid.Row="2" Grid.Column="1"/>
+
+        <Button Grid.ColumnSpan="4" Background="Green" Width="180" Margin="0,10" Grid.Row="3" Command="{Binding SaveCommand}" Content="Submit"/>
+    </Grid>
+
 </UserControl>

@@ -21,5 +21,16 @@ namespace DesktopDevelopment.ViewModels.Many
                 ViewModelToBeOpened = new EmployeeViewModel()
             });
         }
+        protected override void HandleSelect()
+        {
+            if (SelectedModel != null)
+            {
+                WeakReferenceMessenger.Default.Send<OpenViewMessage>(new OpenViewMessage()
+                {
+                    Sender = this,
+                    ViewModelToBeOpened = new EmployeeViewModel(SelectedModel.Id)
+                });
+            }
+        }
     }
 }

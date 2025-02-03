@@ -7,9 +7,9 @@
              xmlns:Many="clr-namespace:DesktopDevelopment.ViewModels.Many" x:Class="DesktopDevelopment.Views.Many.ShipmentMethodsView"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
+    <d:UserControl.DataContext>
         <Many:ShipmentMethodsViewModel/>
-    </UserControl.DataContext>
+    </d:UserControl.DataContext>
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal" Focusable="True">
@@ -29,7 +29,7 @@
                 <Button Content="Filter" Margin="5, 0" Command="{Binding FilterCommand}"/>
                 <Button Content="Clear" Command="{Binding ClearFiltersCommand}"/>
             </StackPanel>
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Models}">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedModel}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                     <DataGridTextColumn Header="Method Name" Binding="{Binding Name}"/>

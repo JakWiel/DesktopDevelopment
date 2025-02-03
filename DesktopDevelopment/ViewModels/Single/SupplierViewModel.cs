@@ -13,7 +13,7 @@ namespace DesktopDevelopment.ViewModels.Single
             {
                 if (Model.SupplierName != value)
                 {
-                    Model.SupplierName = value;
+                    Model.SupplierName = value.Trim();
                     OnPropertyChanged(() => SupplierName);
                 }
             }
@@ -33,5 +33,6 @@ namespace DesktopDevelopment.ViewModels.Single
         }
 
         public SupplierViewModel() : base("Supplier") { }
+        public SupplierViewModel(int id) : base(id, "Supplier") { }
     }
 }

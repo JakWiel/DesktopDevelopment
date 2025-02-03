@@ -45,6 +45,10 @@ namespace DesktopDevelopment.Models.Services
             }
             IQueryable<RepairTicketDto> entitiesDto = entities.Select(item => new RepairTicketDto()
             {
+                Id = item.RepairTicketId,
+                CustomerID = item.CustomerId,
+                Description = item.Description,
+                EmployeeID = item.EmployeeId,
             });
             return entitiesDto.ToList();
         }

@@ -39,13 +39,16 @@ namespace DesktopDevelopment.ViewModels.Single
             {
                 if (Model.Description != value)
                 {
-                    Model.Description = value;
+                    Model.Description = value.Trim();
                     OnPropertyChanged(() => Description);
                 }
             }
         }
 
         public RepairTicketViewModel() : base("Repair Ticket")
+        {
+        }
+        public RepairTicketViewModel(int id) : base(id, "Repair Ticket")
         {
         }
     }

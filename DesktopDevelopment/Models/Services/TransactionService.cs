@@ -11,8 +11,16 @@ namespace DesktopDevelopment.Models.Services
         public DateTime? CreatedTo { get; set; }
         public override void AddModel(Transaction model)
         {
-            DatabaseContext.Transactions.Add(model);
-            DatabaseContext.SaveChanges();
+            if (model.TransactionId == default)
+            {
+                DatabaseContext.Transactions.Add(model);
+                DatabaseContext.SaveChanges();
+            }
+            else
+            {
+                UpdateModel(model);
+            }
+
         }
 
         public override void DeleteModel(TransactionsDto model)

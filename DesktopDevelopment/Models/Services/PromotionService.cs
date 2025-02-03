@@ -11,8 +11,16 @@ namespace DesktopDevelopment.Models.Services
         public DateTime? CreatedTo { get; set; }
         public override void AddModel(Promotion model)
         {
-            DatabaseContext.Promotions.Add(model);
-            DatabaseContext.SaveChanges();
+            if (model.PromotionId == default)
+            {
+                DatabaseContext.Promotions.Add(model);
+                DatabaseContext.SaveChanges();
+            }
+            else
+            {
+                UpdateModel(model);
+            }
+
         }
 
         public override void DeleteModel(PromotionsDto model)

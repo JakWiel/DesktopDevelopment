@@ -13,7 +13,7 @@ namespace DesktopDevelopment.ViewModels.Single
             {
                 if (Model.StatusName != value)
                 {
-                    Model.StatusName = value;
+                    Model.StatusName = value.Trim();
                     OnPropertyChanged(() => StatusName);
                 }
             }
@@ -26,13 +26,16 @@ namespace DesktopDevelopment.ViewModels.Single
             {
                 if (Model.Description != value)
                 {
-                    Model.Description = value;
+                    Model.Description = value.Trim();
                     OnPropertyChanged(() => Description);
                 }
             }
         }
 
         public OrderStatusViewModel() : base("Order Status")
+        {
+        }
+        public OrderStatusViewModel(int id) : base(id, "Order Status")
         {
         }
     }

@@ -11,8 +11,16 @@ namespace DesktopDevelopment.Models.Services
         public DateTime? CreatedTo { get; set; }
         public override void AddModel(ServicesOffered model)
         {
-            DatabaseContext.ServicesOffereds.Add(model);
-            DatabaseContext.SaveChanges();
+            if (model.ServiceId == default)
+            {
+                DatabaseContext.ServicesOffereds.Add(model);
+                DatabaseContext.SaveChanges();
+            }
+            else
+            {
+                UpdateModel(model);
+            }
+
         }
 
         public override void DeleteModel(ServicesOfferedDto model)

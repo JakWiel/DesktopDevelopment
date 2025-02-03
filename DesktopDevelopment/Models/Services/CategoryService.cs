@@ -11,8 +11,16 @@ namespace DesktopDevelopment.Models.Services
         public DateTime? CreatedTo { get; set; }
         public override void AddModel(Category model)
         {
-            DatabaseContext.Categories.Add(model);
-            DatabaseContext.SaveChanges();
+
+            if (model.CategoryId == default)
+            {
+                DatabaseContext.Categories.Add(model);
+                DatabaseContext.SaveChanges();
+            }
+            else
+            {
+                UpdateModel(model);
+            }
         }
 
         public override void DeleteModel(CategoriesDto model)

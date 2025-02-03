@@ -21,6 +21,17 @@ namespace DesktopDevelopment.ViewModels.Many
                 ViewModelToBeOpened = new OrderDetailViewModel()
             });
         }
+        protected override void HandleSelect()
+        {
+            if (SelectedModel != null)
+            {
+                WeakReferenceMessenger.Default.Send<OpenViewMessage>(new OpenViewMessage()
+                {
+                    Sender = this,
+                    ViewModelToBeOpened = new OrderDetailViewModel(SelectedModel.OrderDetailID)
+                });
+            }
+        }
         public DateTime? CreatedFrom
         {
             get => Service.CreatedFrom;

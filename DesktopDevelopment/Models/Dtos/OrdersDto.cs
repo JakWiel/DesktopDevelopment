@@ -5,7 +5,7 @@ namespace DesktopDevelopment.Models.Dtos
     public class OrdersDto
     {
         public int OrderId { get; set; }
-        public string CustomerFullName { get; set; }
+        public string CustomerFullName { get; set; } = null!;
         public int CustomerID { get; set; }
         public int EmployeeID { get; set; }
         public int StatusID { get; set; }

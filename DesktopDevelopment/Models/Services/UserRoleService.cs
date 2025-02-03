@@ -11,8 +11,16 @@ namespace DesktopDevelopment.Models.Services
         public DateTime? CreatedTo { get; set; }
         public override void AddModel(UserRole model)
         {
-            DatabaseContext.UserRoles.Add(model);
-            DatabaseContext.SaveChanges();
+            if (model.RoleId == default)
+            {
+                DatabaseContext.UserRoles.Add(model);
+                DatabaseContext.SaveChanges();
+            }
+            else
+            {
+                UpdateModel(model);
+            }
+
         }
 
         public override void DeleteModel(UserRoleDto model)

@@ -22,7 +22,7 @@ public partial class CustomerReview
     public int Rating { get; set; }
 
     [StringLength(255)]
-    public string Comment { get; set; }
+    public string Comment { get; set; } = null!;
 
     [Column("isActive")]
     public bool IsActive { get; set; }

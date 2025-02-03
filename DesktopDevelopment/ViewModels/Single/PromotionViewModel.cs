@@ -14,7 +14,7 @@ namespace DesktopDevelopment.ViewModels.Single
             {
                 if (Model.PromotionName != value)
                 {
-                    Model.PromotionName = value;
+                    Model.PromotionName = value.Trim();
                     OnPropertyChanged(() => PromotionName);
                 }
             }
@@ -61,6 +61,9 @@ namespace DesktopDevelopment.ViewModels.Single
         }
 
         public PromotionViewModel() : base("Promotion")
+        {
+        }
+        public PromotionViewModel(int id) : base(id, "Promotion")
         {
         }
     }

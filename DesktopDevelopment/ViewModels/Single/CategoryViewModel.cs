@@ -26,7 +26,7 @@ namespace DesktopDevelopment.ViewModels.Single
             {
                 if (Model.CategoryName != value)
                 {
-                    Model.CategoryName = value;
+                    Model.CategoryName = value.Trim();
                     OnPropertyChanged(() => CategoryName);
                 }
             }
@@ -46,6 +46,9 @@ namespace DesktopDevelopment.ViewModels.Single
         }
 
         public CategoryViewModel() : base("Category")
+        {
+        }
+        public CategoryViewModel(int id) : base(id, "Category")
         {
         }
 

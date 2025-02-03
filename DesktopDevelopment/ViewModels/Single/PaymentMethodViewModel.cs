@@ -13,12 +13,15 @@ namespace DesktopDevelopment.ViewModels.Single
             {
                 if (Model.MethodName != value)
                 {
-                    Model.MethodName = value;
+                    Model.MethodName = value.Trim();
                     OnPropertyChanged(() => MethodName);
                 }
             }
         }
         public PaymentMethodViewModel() : base("Payment Method")
+        {
+        }
+        public PaymentMethodViewModel(int id) : base(id, "Payment Method")
         {
         }
     }

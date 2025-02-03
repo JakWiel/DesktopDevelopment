@@ -38,7 +38,7 @@ namespace DesktopDevelopment.ViewModels.Single
             get => Model.Amount;
             set
             {
-                if (Model.Amount != value)
+                if (Model.Amount != value && Model.Amount > 0)
                 {
                     Model.Amount = value;
                     OnPropertyChanged(() => Amount);
@@ -60,6 +60,9 @@ namespace DesktopDevelopment.ViewModels.Single
         }
 
         public TransactionViewModel() : base("Transaction")
+        {
+        }
+        public TransactionViewModel(int id) : base(id, "Transaction")
         {
         }
     }

@@ -11,8 +11,16 @@ namespace DesktopDevelopment.Models.Services
         public DateTime? CreatedTo { get; set; }
         public override void AddModel(Supplier model)
         {
-            DatabaseContext.Suppliers.Add(model);
-            DatabaseContext.SaveChanges();
+            if (model.SupplierId == default)
+            {
+                DatabaseContext.Suppliers.Add(model);
+                DatabaseContext.SaveChanges();
+            }
+            else
+            {
+                UpdateModel(model);
+            }
+
         }
 
         public override void DeleteModel(SuppliersDto model)

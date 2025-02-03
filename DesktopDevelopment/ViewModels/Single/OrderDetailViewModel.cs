@@ -37,7 +37,7 @@ namespace DesktopDevelopment.ViewModels.Single
             get => Model.Quantity;
             set
             {
-                if (Model.Quantity != value)
+                if (Model.Quantity != value && Model.Quantity > 0)
                 {
                     Model.Quantity = value;
                     OnPropertyChanged(() => Quantity);
@@ -73,7 +73,9 @@ namespace DesktopDevelopment.ViewModels.Single
 
         public OrderDetailViewModel() : base("Order Detail")
         {
-
+        }
+        public OrderDetailViewModel(int id) : base(id, "Order Detail")
+        {
         }
     }
 }

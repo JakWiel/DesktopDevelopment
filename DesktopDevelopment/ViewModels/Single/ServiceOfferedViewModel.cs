@@ -13,7 +13,7 @@ namespace DesktopDevelopment.ViewModels.Single
             {
                 if (Model.ServiceName != value)
                 {
-                    Model.ServiceName = value;
+                    Model.ServiceName = value.Trim();
                     OnPropertyChanged(() => ServiceName);
                 }
             }
@@ -47,7 +47,9 @@ namespace DesktopDevelopment.ViewModels.Single
 
         public ServiceOfferedViewModel() : base(" Service Offered")
         {
-
+        }
+        public ServiceOfferedViewModel(int id) : base(id, "Service Offered")
+        {
         }
     }
 }

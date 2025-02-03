@@ -18,7 +18,7 @@ namespace DesktopDevelopment.ViewModels.Single
             {
                 if (Model.FullName != value)
                 {
-                    Model.FullName = value;
+                    Model.FullName = value.Trim();
                     OnPropertyChanged(() => FullName);
                 }
             }

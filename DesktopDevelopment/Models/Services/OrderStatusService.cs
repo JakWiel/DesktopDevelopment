@@ -11,8 +11,16 @@ namespace DesktopDevelopment.Models.Services
         public DateTime? CreatedTo { get; set; }
         public override void AddModel(OrderStatus model)
         {
-            DatabaseContext.OrderStatuses.Add(model);
-            DatabaseContext.SaveChanges();
+            if (model.StatusId == default)
+            {
+                DatabaseContext.OrderStatuses.Add(model);
+                DatabaseContext.SaveChanges();
+            }
+            else
+            {
+                UpdateModel(model);
+            }
+
         }
 
         public override void DeleteModel(OrderStatusDto model)
