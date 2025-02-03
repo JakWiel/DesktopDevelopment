@@ -1,11 +1,16 @@
-﻿using DesktopDevelopment.Models;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using DesktopDevelopment.Helpers;
+using DesktopDevelopment.Models;
 using DesktopDevelopment.Models.Dtos;
 using DesktopDevelopment.Models.Services;
+using DesktopDevelopment.ViewModels.Many;
+using System.Windows.Input;
 
 namespace DesktopDevelopment.ViewModels.Single
 {
     public class EmployeeViewModel : BaseCreateViewModel<EmployeeService, EmployeeDto, Employee>
     {
+        public ICommand SelectRoleCommand { get; set; }
         public string FullName
         {
             get => Model.FullName;
@@ -45,21 +50,56 @@ namespace DesktopDevelopment.ViewModels.Single
             }
         }
 
-        public string Role
+        private int _RoleId;
+        public int RoleId
         {
-            get => Model.Role.RoleName;
+            get => _RoleId;
             set
             {
-                if (Model.Role.RoleName != value)
+                if (value != _RoleId)
                 {
-                    Model.Role.RoleName = value;
-                    OnPropertyChanged(() => Role);
+                    Model.RoleId = value;
+                    OnPropertyChanged(() => RoleId);
+                }
+            }
+        }
+        private string _RoleName;
+        public string RoleName
+        {
+            get => _RoleName;
+            set
+            {
+                if (value != _RoleName)
+                {
+                    _RoleName = value;
+                    OnPropertyChanged(() => RoleName);
                 }
             }
         }
 
         public EmployeeViewModel() : base("New Employee")
         {
+            SelectRoleCommand = new BaseCommand(() => SelectRole());
+            RoleName = "Select Role";
+            WeakReferenceMessenger.Default.Register<SelectedObjectMessage<UserRoleDto>>(this, (recipient, message) => GetSelectedRole(message));
+        }
+        public EmployeeViewModel(int id) : base(id, "New Employee")
+        {
+            SelectRoleCommand = new BaseCommand(() => SelectRole());
+            RoleName = "Select Role";
+            WeakReferenceMessenger.Default.Register<SelectedObjectMessage<UserRoleDto>>(this, (recipient, message) => GetSelectedRole(message));
+        }
+        private void SelectRole()
+        {
+            WindowManager.OpenWindow(new RolesWithCallbackViewModel(this));
+        }
+        private void GetSelectedRole(SelectedObjectMessage<UserRoleDto> message)
+        {
+            if (message.WhoRequestedToSelect == this)
+            {
+                RoleId = message.SelectedObject.Id;
+                RoleName = message.SelectedObject.Name;
+            }
         }
     }
 }

@@ -20,6 +20,7 @@
         <StackPanel.DataContext>
             <Many:CustomersViewModel/>
         </StackPanel.DataContext>
+        
         <StackPanel Orientation="Horizontal" Focusable="True">
             <ToolBar HorizontalAlignment="Left">
                 <Button Margin="10 0" Content="Refresh" Command="{Binding RefreshCommand}"/>
@@ -29,10 +30,19 @@
             <Label Content="Search" VerticalAlignment="Center"/>
             <TextBox Margin="10 2" Width="200" VerticalContentAlignment="Center" Text="{Binding SearchInput}" KeyDown="TextBox_KeyDown"/>
         </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <Label Content="Created from" />
+            <DatePicker Width="120" SelectedDate="{Binding CreatedFrom}" />
+            <Label Content="To" />
+            <DatePicker Width="120" SelectedDate="{Binding CreatedTo}" />
+            <Button Content="Filter" Margin="5, 0" Command="{Binding FilterCommand}"/>
+            <Button Content="Clear" Command="{Binding ClearFiltersCommand}"/>
+        </StackPanel>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Models}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}"/>
+                <DataGridTextColumn Header="Role" Binding="{Binding RoleName}"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" />
             </DataGrid.Columns>

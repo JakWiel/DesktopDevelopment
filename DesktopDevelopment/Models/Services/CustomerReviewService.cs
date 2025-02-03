@@ -8,6 +8,8 @@ namespace DesktopDevelopment.Models.Services
 {
     public class CustomerReviewService : BaseService<CustomersReviewDto, CustomerReview>
     {
+        public DateTime? CreatedFrom { get; set; }
+        public DateTime? CreatedTo { get; set; }
         public override void AddModel(CustomerReview model)
         {
             DatabaseContext.CustomerReviews.Add(model);
@@ -33,6 +35,14 @@ namespace DesktopDevelopment.Models.Services
             if (!string.IsNullOrEmpty(SearchInput))
             {
                 entities = entities.Where(item => item.Customer.FullName.Contains(SearchInput));
+            }
+            if (CreatedFrom != null)
+            {
+                entities = entities.Where(item => item.DateCreated >= CreatedFrom);
+            }
+            if (CreatedTo != null)
+            {
+                entities = entities.Where(item => item.DateCreated <= CreatedTo);
             }
             IQueryable<CustomersReviewDto> entitiesDto = entities.Select(item => new CustomersReviewDto()
             {

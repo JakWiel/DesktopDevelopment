@@ -12,6 +12,7 @@ namespace DesktopDevelopment.ViewModels.Many
         public EmployeesViewModel() : base("Employees")
         {
         }
+
         protected override void CreateNew()
         {
             WeakReferenceMessenger.Default.Send<OpenViewMessage>(new OpenViewMessage()

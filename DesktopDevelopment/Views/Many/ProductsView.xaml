@@ -21,12 +21,21 @@
             <Label Content="Search" VerticalAlignment="Center"/>
             <TextBox Margin="10 2" Width="200" VerticalContentAlignment="Center" Text="{Binding SearchInput}" KeyDown="TextBox_KeyDown"/>
         </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <Label Content="Created from" />
+            <DatePicker Width="120" SelectedDate="{Binding CreatedFrom}" />
+            <Label Content="To" />
+            <DatePicker Width="120" SelectedDate="{Binding CreatedTo}" />
+            <Button Content="Filter" Margin="5, 0" Command="{Binding FilterCommand}"/>
+            <Button Content="Clear" Command="{Binding ClearFiltersCommand}"/>
+        </StackPanel>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedModel}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}"/>
-                <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat={}{0:F2}}"/>
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Created on" Binding="{Binding CreatedDate}" />
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

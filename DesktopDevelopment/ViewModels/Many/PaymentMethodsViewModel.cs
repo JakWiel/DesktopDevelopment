@@ -12,6 +12,7 @@ namespace DesktopDevelopment.ViewModels.Many
         public PaymentMethodsViewModel() : base("Payment Methods")
         {
         }
+
         protected override void CreateNew()
         {
             WeakReferenceMessenger.Default.Send<OpenViewMessage>(new OpenViewMessage()

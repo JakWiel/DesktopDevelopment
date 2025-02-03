@@ -23,7 +23,7 @@ public partial class Customer
     public string? PhoneNumber { get; set; }
 
     [Column("RoleID")]
-    public int? RoleId { get; set; }
+    public int RoleId { get; set; }
 
     [Column("isActive")]
     public bool IsActive { get; set; }

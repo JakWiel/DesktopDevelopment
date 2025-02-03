@@ -7,6 +7,8 @@ namespace DesktopDevelopment.Models.Services
 {
     public class ProductService : BaseService<ProductDto, Product>
     {
+        public DateTime? CreatedFrom { get; set; }
+        public DateTime? CreatedTo { get; set; }
         public override void AddModel(Product model)
         {
             DatabaseContext.Products.Add(model);
@@ -33,12 +35,21 @@ namespace DesktopDevelopment.Models.Services
             {
                 entities = entities.Where(item => item.ProductName.Contains(SearchInput));
             }
+            if (CreatedFrom != null)
+            {
+                entities = entities.Where(item => item.DateCreated >= CreatedFrom);
+            }
+            if (CreatedTo != null)
+            {
+                entities = entities.Where(item => item.DateCreated <= CreatedTo);
+            }
             IQueryable<ProductDto> entitiesDto = entities.Select(item => new ProductDto()
             {
                 Id = item.ProductId,
                 ProductName = item.ProductName,
                 Description = item.Description,
-                Price = item.Price
+                Price = item.Price,
+                CreatedDate = item.DateCreated.Date,
             });
             return entitiesDto.ToList();
         }

@@ -8,6 +8,8 @@ namespace DesktopDevelopment.Models.Services
 {
     public class OrderService : BaseService<OrdersDto, Order>
     {
+        public DateTime? CreatedFrom { get; set; }
+        public DateTime? CreatedTo { get; set; }
         public override void AddModel(Order model)
         {
             DatabaseContext.Orders.Add(model);
@@ -33,6 +35,14 @@ namespace DesktopDevelopment.Models.Services
             if (!string.IsNullOrEmpty(SearchInput))
             {
                 entities = entities.Where(item => item.Customer.FullName.Contains(SearchInput));
+            }
+            if (CreatedFrom != null)
+            {
+                entities = entities.Where(item => item.DateCreated >= CreatedFrom);
+            }
+            if (CreatedTo != null)
+            {
+                entities = entities.Where(item => item.DateCreated <= CreatedTo);
             }
             IQueryable<OrdersDto> entitiesDto = entities.Select(item => new OrdersDto()
             {

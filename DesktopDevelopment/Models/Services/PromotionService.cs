@@ -7,6 +7,8 @@ namespace DesktopDevelopment.Models.Services
 {
     public class PromotionService : BaseService<PromotionsDto, Promotion>
     {
+        public DateTime? CreatedFrom { get; set; }
+        public DateTime? CreatedTo { get; set; }
         public override void AddModel(Promotion model)
         {
             DatabaseContext.Promotions.Add(model);
@@ -32,6 +34,14 @@ namespace DesktopDevelopment.Models.Services
             if (!string.IsNullOrEmpty(SearchInput))
             {
                 entities = entities.Where(item => item.PromotionName.Contains(SearchInput));
+            }
+            if (CreatedFrom != null)
+            {
+                entities = entities.Where(item => item.DateCreated >= CreatedFrom);
+            }
+            if (CreatedTo != null)
+            {
+                entities = entities.Where(item => item.DateCreated <= CreatedTo);
             }
             IQueryable<PromotionsDto> entitiesDto = entities.Select(item => new PromotionsDto()
             {

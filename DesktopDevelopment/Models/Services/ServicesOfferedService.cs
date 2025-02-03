@@ -7,6 +7,8 @@ namespace DesktopDevelopment.Models.Services
 {
     public class ServicesOfferedService : BaseService<ServicesOfferedDto, ServicesOffered>
     {
+        public DateTime? CreatedFrom { get; set; }
+        public DateTime? CreatedTo { get; set; }
         public override void AddModel(ServicesOffered model)
         {
             DatabaseContext.ServicesOffereds.Add(model);
@@ -33,6 +35,14 @@ namespace DesktopDevelopment.Models.Services
             if (!string.IsNullOrEmpty(SearchInput))
             {
                 entities = entities.Where(item => item.ServiceName.Contains(SearchInput));
+            }
+            if (CreatedFrom != null)
+            {
+                entities = entities.Where(item => item.DateCreated >= CreatedFrom);
+            }
+            if (CreatedTo != null)
+            {
+                entities = entities.Where(item => item.DateCreated <= CreatedTo);
             }
             IQueryable<ServicesOfferedDto> entitiesDto = entities.Select(item => new ServicesOfferedDto()
             {

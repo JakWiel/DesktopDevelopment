@@ -9,6 +9,9 @@ namespace DesktopDevelopment.ViewModels.Single
         public ProductViewModel() : base("New Product")
         {
         }
+        public ProductViewModel(int id) : base(id, "New Product")
+        {
+        }
         public string ProductName
         {
             get => Model.ProductName;
@@ -26,7 +29,7 @@ namespace DesktopDevelopment.ViewModels.Single
             get => Model.Price;
             set
             {
-                if (Model.Price != value && Model.Price > 0)
+                if (Model.Price != value)
                 {
                     Model.Price = value;
                     OnPropertyChanged(() => Price);
@@ -38,7 +41,7 @@ namespace DesktopDevelopment.ViewModels.Single
             get => Model.Description;
             set
             {
-                if (Model.Description != value && Model.Description.Length > 0)
+                if (Model.Description != value)
                 {
                     Model.Description = value;
                     OnPropertyChanged(() => Description);

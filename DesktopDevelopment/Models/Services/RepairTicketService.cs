@@ -7,6 +7,8 @@ namespace DesktopDevelopment.Models.Services
 {
     public class RepairTicketService : BaseService<RepairTicketDto, RepairTicket>
     {
+        public DateTime? CreatedFrom { get; set; }
+        public DateTime? CreatedTo { get; set; }
         public override void AddModel(RepairTicket model)
         {
             DatabaseContext.RepairTickets.Add(model);
@@ -32,6 +34,14 @@ namespace DesktopDevelopment.Models.Services
             if (!string.IsNullOrEmpty(SearchInput))
             {
                 entities = entities.Where(item => item.Customer.FullName.Contains(SearchInput));
+            }
+            if (CreatedFrom != null)
+            {
+                entities = entities.Where(item => item.DateCreated >= CreatedFrom);
+            }
+            if (CreatedTo != null)
+            {
+                entities = entities.Where(item => item.DateCreated <= CreatedTo);
             }
             IQueryable<RepairTicketDto> entitiesDto = entities.Select(item => new RepairTicketDto()
             {

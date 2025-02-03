@@ -4,6 +4,7 @@ using DesktopDevelopment.Models;
 using DesktopDevelopment.Models.Dtos;
 using DesktopDevelopment.Models.Services;
 using DesktopDevelopment.ViewModels.Many;
+using System;
 using System.Windows.Input;
 
 namespace DesktopDevelopment.ViewModels.Single
@@ -44,15 +45,15 @@ namespace DesktopDevelopment.ViewModels.Single
                 }
             }
         }
-        private string _RoleId;
-        public string RoleId
+        private int _RoleId;
+        public int RoleId
         {
             get => _RoleId;
             set
             {
                 if (value != _RoleId)
                 {
-                    _RoleId = value;
+                    Model.RoleId = value;
                     OnPropertyChanged(() => RoleId);
                 }
             }
@@ -79,7 +80,7 @@ namespace DesktopDevelopment.ViewModels.Single
         public CustomerViewModel(int id) : base(id, "New Customer")
         {
             SelectRoleCommand = new BaseCommand(() => SelectRole());
-            RoleName = Model.Role.RoleName ?? "Select Country";
+            RoleName = Model.Role.RoleName ?? "Select Role";
             WeakReferenceMessenger.Default.Register<SelectedObjectMessage<UserRoleDto>>(this, (recipient, message) => GetSelectedRole(message));
         }
         private void SelectRole()
@@ -90,8 +91,32 @@ namespace DesktopDevelopment.ViewModels.Single
         {
             if (message.WhoRequestedToSelect == this)
             {
-                RoleId = message.SelectedObject.Id + "";
+                RoleId = message.SelectedObject.Id;
                 RoleName = message.SelectedObject.Name;
+            }
+        }
+        public DateTime? CreatedFrom
+        {
+            get => Service.CreatedFrom;
+            set
+            {
+                if (value != Service.CreatedFrom)
+                {
+                    Service.CreatedFrom = value;
+                    OnPropertyChanged(() => CreatedFrom);
+                }
+            }
+        }
+        public DateTime? CreatedTo
+        {
+            get => Service.CreatedTo;
+            set
+            {
+                if (value != Service.CreatedTo)
+                {
+                    Service.CreatedTo = value;
+                    OnPropertyChanged(() => CreatedTo);
+                }
             }
         }
     }

@@ -7,6 +7,8 @@ namespace DesktopDevelopment.Models.Services
 {
     public class CategoryService : BaseService<CategoriesDto, Category>
     {
+        public DateTime? CreatedFrom { get; set; }
+        public DateTime? CreatedTo { get; set; }
         public override void AddModel(Category model)
         {
             DatabaseContext.Categories.Add(model);
@@ -32,6 +34,14 @@ namespace DesktopDevelopment.Models.Services
             if (!string.IsNullOrEmpty(SearchInput))
             {
                 entities = entities.Where(item => item.CategoryName.Contains(SearchInput));
+            }
+            if (CreatedFrom != null)
+            {
+                entities = entities.Where(item => item.DateCreated >= CreatedFrom);
+            }
+            if (CreatedTo != null)
+            {
+                entities = entities.Where(item => item.DateCreated <= CreatedTo);
             }
             IQueryable<CategoriesDto> entitiesDto = entities.Select(item => new CategoriesDto()
             {

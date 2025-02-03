@@ -27,6 +27,8 @@ namespace DesktopDevelopment.ViewModels.Many
         public ICommand RefreshCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand CreateNewCommand { get; set; }
+        public ICommand FilterCommand { get; set; }
+        public ICommand ClearFiltersCommand { get; set; }
         public string? SearchInput
         {
             get => Service.SearchInput;
@@ -64,8 +66,10 @@ namespace DesktopDevelopment.ViewModels.Many
             RefreshCommand = new BaseCommand(() => Refresh());
             DeleteCommand = new BaseCommand(() => Delete());
             CreateNewCommand = new BaseCommand(() => CreateNew());
+            FilterCommand = new BaseCommand(() => Refresh());
+            ClearFiltersCommand = new BaseCommand(() => ClearFilters());
         }
-        private void Refresh()
+        protected void Refresh()
         {
             Models = new ObservableCollection<DtoType>(Service.GetModels());
         }
@@ -78,7 +82,7 @@ namespace DesktopDevelopment.ViewModels.Many
             }
         }
         protected abstract void CreateNew();
-        protected virtual void HandleSelect()
-        { }
+        protected virtual void ClearFilters() { }
+        protected virtual void HandleSelect() { }
     }
 }
